@@ -8,6 +8,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportTest", "tests\SwissTransportTest\SwissTransportTest.csproj", "{959C6E54-5B1C-40F5-938A-C57B17451421}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportApp", "SwissTransportApp\SwissTransportApp.csproj", "{BFAE0605-1249-4D6F-8FC1-C574AB9D55DF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{959C6E54-5B1C-40F5-938A-C57B17451421} = {959C6E54-5B1C-40F5-938A-C57B17451421}
+		{D0262178-A48F-4DE0-807B-E76B63E39421} = {D0262178-A48F-4DE0-807B-E76B63E39421}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
