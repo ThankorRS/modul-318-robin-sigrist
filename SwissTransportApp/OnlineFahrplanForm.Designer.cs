@@ -37,12 +37,14 @@
             this.btnToggleView = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gbZeitDatum = new System.Windows.Forms.GroupBox();
-            this.btnAnkunft = new System.Windows.Forms.Button();
+            this.btnArrival = new System.Windows.Forms.Button();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.timePicker = new System.Windows.Forms.DateTimePicker();
-            this.btnAbfahrt = new System.Windows.Forms.Button();
+            this.btnDeparture = new System.Windows.Forms.Button();
             this.gbLocation = new System.Windows.Forms.GroupBox();
-            this.tbxZielLocation = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnChangeTbx = new System.Windows.Forms.Button();
+            this.tbxTargetLocation = new System.Windows.Forms.ComboBox();
             this.tbxStartLocation = new System.Windows.Forms.ComboBox();
             this.btnMapZielStation = new System.Windows.Forms.Button();
             this.btnMapStartStation = new System.Windows.Forms.Button();
@@ -74,7 +76,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.spContainer.Location = new System.Drawing.Point(-2, 1);
-            this.spContainer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.spContainer.Margin = new System.Windows.Forms.Padding(2);
             this.spContainer.Name = "spContainer";
             this.spContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -98,6 +100,7 @@
             // 
             // gbWeiteres
             // 
+            this.gbWeiteres.BackColor = System.Drawing.Color.Transparent;
             this.gbWeiteres.Controls.Add(this.btnShowMap);
             this.gbWeiteres.Controls.Add(this.tbxMail);
             this.gbWeiteres.Controls.Add(this.btnSendEmail);
@@ -152,7 +155,6 @@
             this.btnToggleView.Text = "Abfahrtstafel";
             this.btnToggleView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnToggleView.UseVisualStyleBackColor = true;
-
             // 
             // btnSearch
             // 
@@ -162,7 +164,7 @@
             this.btnSearch.Enabled = false;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Location = new System.Drawing.Point(685, 104);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(125, 59);
             this.btnSearch.TabIndex = 6;
@@ -174,35 +176,36 @@
             // 
             this.gbZeitDatum.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbZeitDatum.Controls.Add(this.btnAnkunft);
+            this.gbZeitDatum.BackColor = System.Drawing.Color.Transparent;
+            this.gbZeitDatum.Controls.Add(this.btnArrival);
             this.gbZeitDatum.Controls.Add(this.datePicker);
             this.gbZeitDatum.Controls.Add(this.timePicker);
-            this.gbZeitDatum.Controls.Add(this.btnAbfahrt);
+            this.gbZeitDatum.Controls.Add(this.btnDeparture);
             this.gbZeitDatum.Location = new System.Drawing.Point(211, 32);
-            this.gbZeitDatum.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbZeitDatum.Margin = new System.Windows.Forms.Padding(2);
             this.gbZeitDatum.Name = "gbZeitDatum";
-            this.gbZeitDatum.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbZeitDatum.Padding = new System.Windows.Forms.Padding(2);
             this.gbZeitDatum.Size = new System.Drawing.Size(184, 146);
             this.gbZeitDatum.TabIndex = 4;
             this.gbZeitDatum.TabStop = false;
             this.gbZeitDatum.Text = "Zeit/Datum";
             // 
-            // btnAnkunft
+            // btnArrival
             // 
-            this.btnAnkunft.Location = new System.Drawing.Point(25, 66);
-            this.btnAnkunft.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnAnkunft.Name = "btnAnkunft";
-            this.btnAnkunft.Size = new System.Drawing.Size(140, 24);
-            this.btnAnkunft.TabIndex = 3;
-            this.btnAnkunft.Text = "Ankunft um";
-            this.btnAnkunft.UseVisualStyleBackColor = true;
-            this.btnAnkunft.Click += new System.EventHandler(this.btnAnkunft_Click);
+            this.btnArrival.Location = new System.Drawing.Point(25, 66);
+            this.btnArrival.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArrival.Name = "btnArrival";
+            this.btnArrival.Size = new System.Drawing.Size(140, 24);
+            this.btnArrival.TabIndex = 3;
+            this.btnArrival.Text = "Ankunft um";
+            this.btnArrival.UseVisualStyleBackColor = true;
+            this.btnArrival.Click += new System.EventHandler(this.BtnArrival_Click);
             // 
             // datePicker
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePicker.Location = new System.Drawing.Point(79, 106);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(2);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(89, 20);
             this.datePicker.TabIndex = 2;
@@ -212,50 +215,72 @@
             this.timePicker.CustomFormat = "HH:mm";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.timePicker.Location = new System.Drawing.Point(25, 106);
-            this.timePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timePicker.Margin = new System.Windows.Forms.Padding(2);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
             this.timePicker.Size = new System.Drawing.Size(50, 20);
             this.timePicker.TabIndex = 1;
             this.timePicker.Value = new System.DateTime(2020, 11, 26, 11, 22, 0, 0);
             // 
-            // btnAbfahrt
+            // btnDeparture
             // 
-            this.btnAbfahrt.Location = new System.Drawing.Point(25, 27);
-            this.btnAbfahrt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnAbfahrt.Name = "btnAbfahrt";
-            this.btnAbfahrt.Size = new System.Drawing.Size(140, 24);
-            this.btnAbfahrt.TabIndex = 0;
-            this.btnAbfahrt.Text = "Abfahrt um";
-            this.btnAbfahrt.UseVisualStyleBackColor = true;
-            this.btnAbfahrt.Click += new System.EventHandler(this.btnAbfahrt_Click);
+            this.btnDeparture.Location = new System.Drawing.Point(25, 27);
+            this.btnDeparture.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeparture.Name = "btnDeparture";
+            this.btnDeparture.Size = new System.Drawing.Size(140, 24);
+            this.btnDeparture.TabIndex = 0;
+            this.btnDeparture.Text = "Abfahrt um";
+            this.btnDeparture.UseVisualStyleBackColor = true;
+            this.btnDeparture.Click += new System.EventHandler(this.BtnDeparture_Click);
             // 
             // gbLocation
             // 
             this.gbLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbLocation.BackColor = System.Drawing.Color.Transparent;
-            this.gbLocation.Controls.Add(this.tbxZielLocation);
+            this.gbLocation.Controls.Add(this.label1);
+            this.gbLocation.Controls.Add(this.btnChangeTbx);
+            this.gbLocation.Controls.Add(this.tbxTargetLocation);
             this.gbLocation.Controls.Add(this.tbxStartLocation);
             this.gbLocation.Controls.Add(this.btnMapZielStation);
             this.gbLocation.Controls.Add(this.btnMapStartStation);
             this.gbLocation.Controls.Add(this.lbZiel);
             this.gbLocation.Controls.Add(this.lbStart);
             this.gbLocation.Location = new System.Drawing.Point(11, 26);
-            this.gbLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbLocation.Margin = new System.Windows.Forms.Padding(2);
             this.gbLocation.Name = "gbLocation";
-            this.gbLocation.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbLocation.Padding = new System.Windows.Forms.Padding(2);
             this.gbLocation.Size = new System.Drawing.Size(186, 152);
             this.gbLocation.TabIndex = 0;
             this.gbLocation.TabStop = false;
             // 
-            // tbxZielLocation
+            // label1
             // 
-            this.tbxZielLocation.FormattingEnabled = true;
-            this.tbxZielLocation.Location = new System.Drawing.Point(65, 111);
-            this.tbxZielLocation.Name = "tbxZielLocation";
-            this.tbxZielLocation.Size = new System.Drawing.Size(111, 21);
-            this.tbxZielLocation.TabIndex = 7;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(76, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Umdrehen";
+            // 
+            // btnChangeTbx
+            // 
+            this.btnChangeTbx.Location = new System.Drawing.Point(133, 7);
+            this.btnChangeTbx.Name = "btnChangeTbx";
+            this.btnChangeTbx.Size = new System.Drawing.Size(53, 28);
+            this.btnChangeTbx.TabIndex = 8;
+            this.btnChangeTbx.Text = "<-->";
+            this.btnChangeTbx.UseVisualStyleBackColor = true;
+            this.btnChangeTbx.Click += new System.EventHandler(this.BtnChangeTbx_Click);
+            // 
+            // tbxTargetLocation
+            // 
+            this.tbxTargetLocation.FormattingEnabled = true;
+            this.tbxTargetLocation.Location = new System.Drawing.Point(65, 111);
+            this.tbxTargetLocation.Name = "tbxTargetLocation";
+            this.tbxTargetLocation.Size = new System.Drawing.Size(111, 21);
+            this.tbxTargetLocation.TabIndex = 7;
+            this.tbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxTargetLocation_TextChanged);
             // 
             // tbxStartLocation
             // 
@@ -265,6 +290,7 @@
             this.tbxStartLocation.Name = "tbxStartLocation";
             this.tbxStartLocation.Size = new System.Drawing.Size(111, 21);
             this.tbxStartLocation.TabIndex = 6;
+            this.tbxStartLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxStartLocation_TextChanged);
             // 
             // btnMapZielStation
             // 
@@ -332,7 +358,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 123;
             this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.Size = new System.Drawing.Size(833, 230);
+            this.dgv.Size = new System.Drawing.Size(833, 240);
             this.dgv.TabIndex = 0;
             // 
             // Datum
@@ -398,7 +424,7 @@
             this.ClientSize = new System.Drawing.Size(835, 352);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(65, 61);
             this.Name = "OnlineFahrplanForm";
             this.Text = "SBB CFF FFS - Fahrplan";
@@ -424,7 +450,7 @@
         private System.Windows.Forms.Label lbStart;
         private System.Windows.Forms.GroupBox gbZeitDatum;
         private System.Windows.Forms.DateTimePicker timePicker;
-        private System.Windows.Forms.Button btnAbfahrt;
+        private System.Windows.Forms.Button btnDeparture;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnToggleView;
@@ -436,8 +462,8 @@
         private System.Windows.Forms.GroupBox gbWeiteres;
         private System.Windows.Forms.Button btnShowMap;
         private System.Windows.Forms.ComboBox tbxStartLocation;
-        private System.Windows.Forms.ComboBox tbxZielLocation;
-        private System.Windows.Forms.Button btnAnkunft;
+        private System.Windows.Forms.ComboBox tbxTargetLocation;
+        private System.Windows.Forms.Button btnArrival;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrtsort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrtzeit;
@@ -446,6 +472,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Dauer;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kante_Abfahrtsort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Kante_Ankunftsort;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnChangeTbx;
     }
 }
 
