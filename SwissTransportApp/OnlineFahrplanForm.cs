@@ -22,12 +22,17 @@ namespace SwissTransportApp
 
         public OnlineFahrplanForm()
         {
+            // Setting default Values on Formload
             InitializeComponent();
             timePicker.Text = DateTime.Now.ToString("HH:mm");
             datePicker.Text = DateTime.Now.ToString("dd.MM.yyyy");
+            btnAnkunft.Enabled = false;
+            btnSearch.Enabled = false;
+            btnSendEmail.Enabled = false;
             gbLocation.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbWeiteres.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbZeitDatum.BackColor = Color.FromArgb(100, 255, 255, 255);
+            // Check if the user has an Internet Connection
             //CheckConnection();
         }
 
