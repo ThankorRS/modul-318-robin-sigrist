@@ -44,8 +44,8 @@
             this.gbLocation = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnChangeTbx = new System.Windows.Forms.Button();
-            this.tbxTargetLocation = new System.Windows.Forms.ComboBox();
-            this.tbxStartLocation = new System.Windows.Forms.ComboBox();
+            this.cbxTargetLocation = new System.Windows.Forms.ComboBox();
+            this.cbxStartLocation = new System.Windows.Forms.ComboBox();
             this.btnMapZielStation = new System.Windows.Forms.Button();
             this.btnMapStartStation = new System.Windows.Forms.Button();
             this.lbZiel = new System.Windows.Forms.Label();
@@ -93,8 +93,8 @@
             // spContainer.Panel2
             // 
             this.spContainer.Panel2.Controls.Add(this.dgv);
-            this.spContainer.Size = new System.Drawing.Size(836, 449);
-            this.spContainer.SplitterDistance = 219;
+            this.spContainer.Size = new System.Drawing.Size(838, 472);
+            this.spContainer.SplitterDistance = 230;
             this.spContainer.SplitterWidth = 3;
             this.spContainer.TabIndex = 0;
             // 
@@ -150,7 +150,7 @@
             this.btnToggleView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnToggleView.Location = new System.Drawing.Point(685, 29);
             this.btnToggleView.Name = "btnToggleView";
-            this.btnToggleView.Size = new System.Drawing.Size(125, 68);
+            this.btnToggleView.Size = new System.Drawing.Size(127, 68);
             this.btnToggleView.TabIndex = 7;
             this.btnToggleView.Text = "Abfahrtstafel";
             this.btnToggleView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -166,7 +166,7 @@
             this.btnSearch.Location = new System.Drawing.Point(685, 104);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(125, 59);
+            this.btnSearch.Size = new System.Drawing.Size(127, 59);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -185,7 +185,7 @@
             this.gbZeitDatum.Margin = new System.Windows.Forms.Padding(2);
             this.gbZeitDatum.Name = "gbZeitDatum";
             this.gbZeitDatum.Padding = new System.Windows.Forms.Padding(2);
-            this.gbZeitDatum.Size = new System.Drawing.Size(184, 146);
+            this.gbZeitDatum.Size = new System.Drawing.Size(186, 146);
             this.gbZeitDatum.TabIndex = 4;
             this.gbZeitDatum.TabStop = false;
             this.gbZeitDatum.Text = "Zeit/Datum";
@@ -240,8 +240,8 @@
             this.gbLocation.BackColor = System.Drawing.Color.Transparent;
             this.gbLocation.Controls.Add(this.label1);
             this.gbLocation.Controls.Add(this.btnChangeTbx);
-            this.gbLocation.Controls.Add(this.tbxTargetLocation);
-            this.gbLocation.Controls.Add(this.tbxStartLocation);
+            this.gbLocation.Controls.Add(this.cbxTargetLocation);
+            this.gbLocation.Controls.Add(this.cbxStartLocation);
             this.gbLocation.Controls.Add(this.btnMapZielStation);
             this.gbLocation.Controls.Add(this.btnMapStartStation);
             this.gbLocation.Controls.Add(this.lbZiel);
@@ -250,7 +250,7 @@
             this.gbLocation.Margin = new System.Windows.Forms.Padding(2);
             this.gbLocation.Name = "gbLocation";
             this.gbLocation.Padding = new System.Windows.Forms.Padding(2);
-            this.gbLocation.Size = new System.Drawing.Size(186, 152);
+            this.gbLocation.Size = new System.Drawing.Size(188, 152);
             this.gbLocation.TabIndex = 0;
             this.gbLocation.TabStop = false;
             // 
@@ -273,24 +273,24 @@
             this.btnChangeTbx.UseVisualStyleBackColor = true;
             this.btnChangeTbx.Click += new System.EventHandler(this.BtnChangeTbx_Click);
             // 
-            // tbxTargetLocation
+            // cbxTargetLocation
             // 
-            this.tbxTargetLocation.FormattingEnabled = true;
-            this.tbxTargetLocation.Location = new System.Drawing.Point(65, 111);
-            this.tbxTargetLocation.Name = "tbxTargetLocation";
-            this.tbxTargetLocation.Size = new System.Drawing.Size(111, 21);
-            this.tbxTargetLocation.TabIndex = 7;
-            this.tbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxTargetLocation_TextChanged);
+            this.cbxTargetLocation.FormattingEnabled = true;
+            this.cbxTargetLocation.Location = new System.Drawing.Point(65, 111);
+            this.cbxTargetLocation.Name = "cbxTargetLocation";
+            this.cbxTargetLocation.Size = new System.Drawing.Size(111, 21);
+            this.cbxTargetLocation.TabIndex = 7;
+            this.cbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxTargetLocation_TextChanged);
             // 
-            // tbxStartLocation
+            // cbxStartLocation
             // 
-            this.tbxStartLocation.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tbxStartLocation.FormattingEnabled = true;
-            this.tbxStartLocation.Location = new System.Drawing.Point(65, 62);
-            this.tbxStartLocation.Name = "tbxStartLocation";
-            this.tbxStartLocation.Size = new System.Drawing.Size(111, 21);
-            this.tbxStartLocation.TabIndex = 6;
-            this.tbxStartLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxStartLocation_TextChanged);
+            this.cbxStartLocation.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cbxStartLocation.FormattingEnabled = true;
+            this.cbxStartLocation.Location = new System.Drawing.Point(65, 62);
+            this.cbxStartLocation.Name = "cbxStartLocation";
+            this.cbxStartLocation.Size = new System.Drawing.Size(111, 21);
+            this.cbxStartLocation.TabIndex = 6;
+            this.cbxStartLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStartLocation_TextChanged);
             // 
             // btnMapZielStation
             // 
@@ -358,7 +358,7 @@
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 123;
             this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.Size = new System.Drawing.Size(833, 240);
+            this.dgv.Size = new System.Drawing.Size(835, 254);
             this.dgv.TabIndex = 0;
             // 
             // Datum
@@ -421,7 +421,7 @@
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 352);
+            this.ClientSize = new System.Drawing.Size(837, 375);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -461,8 +461,8 @@
         private System.Windows.Forms.TextBox tbxMail;
         private System.Windows.Forms.GroupBox gbWeiteres;
         private System.Windows.Forms.Button btnShowMap;
-        private System.Windows.Forms.ComboBox tbxStartLocation;
-        private System.Windows.Forms.ComboBox tbxTargetLocation;
+        private System.Windows.Forms.ComboBox cbxStartLocation;
+        private System.Windows.Forms.ComboBox cbxTargetLocation;
         private System.Windows.Forms.Button btnArrival;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Abfahrtsort;

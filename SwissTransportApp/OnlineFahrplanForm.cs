@@ -15,6 +15,12 @@ using System.Windows.Forms;
 using System.Device.Location;
 
 namespace SwissTransportApp
+
+    /*
+     TODO
+        - screw the auto thing for the moment and focus on the main functions
+        - implement afterwards the auto thing ;)
+     */
 {
     partial class OnlineFahrplanForm : Form
     {
@@ -58,8 +64,8 @@ namespace SwissTransportApp
                 {
                     connectingForm.Close();
                     DialogResult dialogResult = MessageBox.Show("Ihre Internetverbindung scheint gestört. Bitte beheben Sie dies um mit der Applikation fort zu fahren.",
-                        "Fehlende Internetverbindung", 
-                        MessageBoxButtons.RetryCancel, 
+                        "Fehlende Internetverbindung",
+                        MessageBoxButtons.RetryCancel,
                         MessageBoxIcon.Error
                     );
                     if (dialogResult == DialogResult.Cancel)
@@ -92,16 +98,16 @@ namespace SwissTransportApp
         // Change on btn click the directions
         private void BtnChangeTbx_Click(object sender, EventArgs e)
         {
-            string tbxStart = tbxStartLocation.Text;
-            string tbxEnd = tbxTargetLocation.Text;
-            tbxStartLocation.Text = tbxEnd;
-            tbxTargetLocation.Text = tbxStart;
+            string tbxStart = cbxStartLocation.Text;
+            string tbxEnd = cbxTargetLocation.Text;
+            cbxStartLocation.Text = tbxEnd;
+            cbxTargetLocation.Text = tbxStart;
         }
         //send on btn click the mail preperated with the GenerateMailText() function
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             string emailText = GenerateMailText();
-            Process.Start("mailto: " + "?subject={Online Fahrplan}" + tbxMail.Text + "&body=" + emailText);
+            Process.Start("mailto: " + "?subject={SBB CFF FFS - Online Fahrplan}" + tbxMail.Text + "&body=" + emailText);
         }
         // generate Mail text to send on btn click
         private string GenerateMailText()
@@ -119,63 +125,14 @@ namespace SwissTransportApp
 
             return emailText;
         }
-        private void TextBoxLocationChanged()
-        {
-            tbxStartLocation.BackColor = Color.White;
-            tbxTargetLocation.BackColor = Color.White;
-            if (tbxTargetLocation.Text.Length != 0 && tbxStartLocation.Text.Length != 0 && !departureBoard)
-            {
-                btnSearch.Enabled = true;
-            }
-            else if (departureBoard && tbxStartLocation.Text.Length != 0)
-            {
-                btnSearch.Enabled = true;
-            }
-            else
-            {
-                btnSearch.Enabled = false;
-            }
-        }
         private void TextBoxStartLocation_TextChanged(object sender, KeyEventArgs e)
         {
-            if (AutoComplete.CheckFireEvent(e))
+            // if fire event is not true (not key up, down, enter) update ComboBox
+            if (!AutoComplete.CheckFireEvent(e))
             {
-                UpdateAutoCompleteForStart();
+                UpdateAutoComplete(cbxStartLocation);
             }
-            if (tbxStartLocation.Text.Length != 0)
-            {
-                btnMapStartStation.Enabled = true;
-            }
-            else
-            {
-                btnMapStartStation.Enabled = false;
-            }
-            TextBoxLocationChanged();
-        }
-        private void UpdateAutoCompleteForStart()
-        {
-            while (tbxStartLocation.Items.Count > 0)
-            {
-                tbxStartLocation.Items.RemoveAt(0);
-            }
-            List<string> stations = AutoComplete.GenerateAutocomplete(tbxStartLocation.Text);
-            foreach (String station in stations)
-            {
-                if (station != null)
-                {
-                    tbxStartLocation.Items.Add(station);
-                }
-            }
-            tbxStartLocation.DroppedDown = true;
-        }
-        private void TextBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
-        {
-            if (AutoComplete.CheckFireEvent(e))
-            {
-                UpdateAutoCompleteForTarget();
-            }
-
-            if (tbxTargetLocation.Text.Length != 0)
+            if (cbxStartLocation.Text.Length != 0)
             {
                 btnMapZielStation.Enabled = true;
             }
@@ -183,25 +140,40 @@ namespace SwissTransportApp
             {
                 btnMapZielStation.Enabled = false;
             }
-            TextBoxLocationChanged();
-        }
-        private void UpdateAutoCompleteForTarget()
+        }        
+        private void TextBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
         {
-            while (tbxTargetLocation.Items.Count > 0)
+            if (AutoComplete.CheckFireEvent(e))
             {
-                tbxTargetLocation.Items.RemoveAt(0);
+                UpdateAutoComplete(cbxTargetLocation);
             }
-            List<string> stations = AutoComplete.GenerateAutocomplete(tbxTargetLocation.Text);
-            foreach (String station in stations)
+
+            if (cbxTargetLocation.Text.Length != 0)
+            {
+                btnMapZielStation.Enabled = true;
+            }
+            else
+            {
+                btnMapZielStation.Enabled = false;
+            }
+        }
+        private void UpdateAutoComplete(ComboBox cbx)
+        {
+            while (cbx.Items.Count > 0)
+            {
+                cbx.Items.RemoveAt(0);
+            }
+            //cbx.Items.Add(AutoComplete.GenerateAutocomplete(cbx.Text));
+            List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
+            foreach (string station in stations)
             {
                 if (station != null)
                 {
-                    tbxTargetLocation.Items.Add(station);
+                    cbx.Items.Add(station);
                 }
             }
-            tbxTargetLocation.DroppedDown = true;
+            cbx.DroppedDown = true;
         }
-
     }
 }
 
