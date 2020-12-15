@@ -36,9 +36,24 @@ namespace SwissTransportApp
             //CheckConnection();
         }
 
-        private void btnToggleView_Click(object sender, EventArgs e)
+        private void btnAbfahrt_Click(object sender, EventArgs e)
         {
+            btnAnkunft.FlatAppearance.BorderColor = Color.LightGray;
+            btnAnkunft.BackColor = Color.LightGray;
+            btnAbfahrt.Enabled = false;
+            btnAbfahrt.FlatAppearance.BorderColor = Color.Green;
+            btnAbfahrt.BackColor = Color.Green;
+            btnAnkunft.Enabled = true;
+        }
 
+        private void btnAnkunft_Click(object sender, EventArgs e)
+        {
+            btnAbfahrt.FlatAppearance.BorderColor = Color.LightGray;
+            btnAbfahrt.BackColor = Color.LightGray;
+            btnAnkunft.Enabled = false;
+            btnAnkunft.FlatAppearance.BorderColor = Color.Green;
+            btnAnkunft.BackColor = Color.Green;
+            btnAbfahrt.Enabled = true;
         }
     }
 }

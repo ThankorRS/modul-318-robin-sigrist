@@ -152,7 +152,7 @@
             this.btnToggleView.Text = "Abfahrtstafel";
             this.btnToggleView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnToggleView.UseVisualStyleBackColor = true;
-            this.btnToggleView.Click += new System.EventHandler(this.btnToggleView_Click);
+
             // 
             // btnSearch
             // 
@@ -196,6 +196,7 @@
             this.btnAnkunft.TabIndex = 3;
             this.btnAnkunft.Text = "Ankunft um";
             this.btnAnkunft.UseVisualStyleBackColor = true;
+            this.btnAnkunft.Click += new System.EventHandler(this.btnAnkunft_Click);
             // 
             // datePicker
             // 
@@ -227,6 +228,7 @@
             this.btnAbfahrt.TabIndex = 0;
             this.btnAbfahrt.Text = "Abfahrt um";
             this.btnAbfahrt.UseVisualStyleBackColor = true;
+            this.btnAbfahrt.Click += new System.EventHandler(this.btnAbfahrt_Click);
             // 
             // gbLocation
             // 
