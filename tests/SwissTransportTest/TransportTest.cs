@@ -34,7 +34,7 @@
         public void Connections()
         {
             testee = new Transport();
-            var connections = this.testee.GetConnections("Sursee", "Luzern");
+            var connections = this.testee.GetConnections("Sursee", "Luzern", "13:00", "22-12-2015");
 
             Assert.IsNotNull(connections);
         }

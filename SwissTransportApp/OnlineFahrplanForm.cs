@@ -38,7 +38,7 @@ namespace SwissTransportApp
             btnDeparture.Enabled = false;
             btnDeparture.BackColor = Color.Green;
             btnArrival.Enabled = true;
-            btnSearch.Enabled = true;
+            btnSearch.Enabled = false;
             btnSendEmail.Enabled = false;
             gbLocation.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbWeiteres.BackColor = Color.FromArgb(100, 255, 255, 255);
@@ -128,10 +128,30 @@ namespace SwissTransportApp
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Connections Connections = transp.GetConnections(cbxStartLocation.Text, cbxTargetLocation.Text);
-            if (Connections.ConnectionList.Count != 0)
+            if (cbxStartLocation.Text != "" || cbxStartLocation.Text.Length != 0)
             {
-                RenewConnections(Connections);
+                Cursor.Current = Cursors.WaitCursor;
+                string Date = DateTime.Parse(datePicker.Text).ToString("dd.MM.yyyy");
+                string Time = DateTime.Parse(timePicker.Text).ToString("HH:mm");
+                try
+                {
+                    if(!departureBoard && (cbxTargetLocation.Text != "" || cbxTargetLocation.Text.Length != 0))
+                    {
+                        Connections Connections = transp.GetConnections(cbxStartLocation.Text, cbxTargetLocation.Text, Time, Date);
+                        if (Connections.ConnectionList.Count != 0)
+                        {
+                            RenewConnections(Connections);
+                        }
+                        else
+                        {
+                            // Error
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
         private void RenewConnections(Connections connections)
@@ -162,7 +182,7 @@ namespace SwissTransportApp
                 });
             }
         }
-        private void TextBoxStartLocation_TextChanged(object sender, KeyEventArgs e)
+        private void ComboBoxStartLocation_TextChanged(object sender, KeyEventArgs e)
         {
            // if fire event is not true (not key up, down, enter) update ComboBox
            if (!AutoComplete.CheckFireEvent(e))
@@ -171,14 +191,15 @@ namespace SwissTransportApp
            }
            if (cbxStartLocation.Text.Length != 0)
            {
-               btnMapZielStation.Enabled = true;
+                btnMapStartLocation.Enabled = true;
            }
            else
            {
-               btnMapZielStation.Enabled = false;
+                btnMapStartLocation.Enabled = false;
            }
+            CheckStartTargetCbxEmpty();
         }        
-        private void TextBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
+        private void ComboBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
         {
            if (AutoComplete.CheckFireEvent(e))
            {
@@ -187,29 +208,89 @@ namespace SwissTransportApp
 
            if (cbxTargetLocation.Text.Length != 0)
            {
-               btnMapZielStation.Enabled = true;
+               btnMapTargetLocation.Enabled = true;
            }
            else
            {
-               btnMapZielStation.Enabled = false;
+               btnMapTargetLocation.Enabled = false;
            }
+            CheckStartTargetCbxEmpty();
+        }
+        private void ComboBoxDepartureBoard_TextChanged(object sender, KeyEventArgs e)
+        {
+            if (AutoComplete.CheckFireEvent(e))
+            {
+                UpdateAutoComplete(cbxDepartureBoard);
+            }
         }
         private void UpdateAutoComplete(ComboBox cbx)
         {
-           while (cbx.Items.Count > 0)
-           {
-               cbx.Items.RemoveAt(0);
-           }
-           //cbx.Items.Add(AutoComplete.GenerateAutocomplete(cbx.Text));
-           List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
-           foreach (string station in stations)
-           {
-               if (station != null)
-               {
-                   cbx.Items.Add(station);
-               }
-           }
-           cbx.DroppedDown = true;
+            while (cbx.Items.Count > 0)
+            {
+                cbx.Items.RemoveAt(0);
+            }
+            List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
+            foreach (string station in stations)
+            {
+                if (station != null)
+                {
+                cbx.Items.Add(station);
+                }
+            }
+            cbx.DroppedDown = true;
+        }
+        private void CheckStartTargetCbxEmpty()
+        {
+            if ((cbxStartLocation.Text.Length != 0 && cbxStartLocation.Text != "") && (cbxTargetLocation.Text.Length != 0 && cbxTargetLocation.Text != ""))
+            {
+                btnSearch.Enabled = true;
+            }
+            else
+            {
+                btnSearch.Enabled = false;
+            }
+        }
+
+        private void btnStationBoard_Click(object sender, EventArgs e)
+        {
+            string stationID = "";
+            Stations stations = transp.GetStations(cbxDepartureBoard.Text);
+            foreach(Station station in stations.StationList)
+            {
+                stationID = station.Id;
+            }
+            StationBoardRoot stationBoard = transp.GetStationBoard(
+                cbxDepartureBoard.Text,
+                stationID
+            );
+            if (stationBoard.Entries.Count == 0)
+            {
+                // Error
+            }
+            else
+            {
+                StationBoardUpdate(stationBoard);
+            }
+
+        }
+        private void StationBoardUpdate(StationBoardRoot stationBoardRoot)
+        {
+            int i = 0;
+            gridResult.Rows.Clear();
+            gridResult.Columns.Clear();
+            gridResult.Columns.Add("Datum", "Datum");
+            gridResult.Columns.Add("Abfahrtzeit", "Abfahrtzeit");
+            gridResult.Columns.Add("Abfahrtsort", "Abfahrtsort");
+            gridResult.Columns.Add("Richtung", "Richtung");
+            gridResult.Columns.Add("Linie", "Linie");
+            foreach (StationBoard stationBoard in stationBoardRoot.Entries)
+            {
+                if (i <= 10)
+                {
+                    gridResult.Rows.Add(new[] { stationBoard.Stop.Departure.ToString("dd.MM.yyyy"), stationBoard.Stop.Departure.ToString("HH:mm"), stationBoardRoot.Station.Name, stationBoard.To, stationBoard.Name });
+                    i++;
+                }
+            }
         }
     }
 }

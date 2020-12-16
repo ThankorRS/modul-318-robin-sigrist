@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OnlineFahrplanForm));
             this.spContainer = new System.Windows.Forms.SplitContainer();
+            this.cbxDepartureBoard = new System.Windows.Forms.ComboBox();
             this.gbWeiteres = new System.Windows.Forms.GroupBox();
             this.btnShowMap = new System.Windows.Forms.Button();
             this.tbxMail = new System.Windows.Forms.TextBox();
             this.btnSendEmail = new System.Windows.Forms.Button();
-            this.btnToggleView = new System.Windows.Forms.Button();
+            this.btnStationBoard = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.gbZeitDatum = new System.Windows.Forms.GroupBox();
             this.btnArrival = new System.Windows.Forms.Button();
@@ -46,8 +47,8 @@
             this.btnChangeTbx = new System.Windows.Forms.Button();
             this.cbxTargetLocation = new System.Windows.Forms.ComboBox();
             this.cbxStartLocation = new System.Windows.Forms.ComboBox();
-            this.btnMapZielStation = new System.Windows.Forms.Button();
-            this.btnMapStartStation = new System.Windows.Forms.Button();
+            this.btnMapTargetLocation = new System.Windows.Forms.Button();
+            this.btnMapStartLocation = new System.Windows.Forms.Button();
             this.lbZiel = new System.Windows.Forms.Label();
             this.lbStart = new System.Windows.Forms.Label();
             this.gridResult = new System.Windows.Forms.DataGridView();
@@ -84,8 +85,9 @@
             // 
             this.spContainer.Panel1.BackColor = System.Drawing.Color.Snow;
             this.spContainer.Panel1.BackgroundImage = global::SwissTransportApp.Properties.Resources.swiss_alps_snow_covered_mountains_glacier_switzerland_3840x2160_2443__2_;
+            this.spContainer.Panel1.Controls.Add(this.cbxDepartureBoard);
             this.spContainer.Panel1.Controls.Add(this.gbWeiteres);
-            this.spContainer.Panel1.Controls.Add(this.btnToggleView);
+            this.spContainer.Panel1.Controls.Add(this.btnStationBoard);
             this.spContainer.Panel1.Controls.Add(this.btnSearch);
             this.spContainer.Panel1.Controls.Add(this.gbZeitDatum);
             this.spContainer.Panel1.Controls.Add(this.gbLocation);
@@ -93,10 +95,20 @@
             // spContainer.Panel2
             // 
             this.spContainer.Panel2.Controls.Add(this.gridResult);
-            this.spContainer.Size = new System.Drawing.Size(838, 472);
-            this.spContainer.SplitterDistance = 229;
+            this.spContainer.Size = new System.Drawing.Size(838, 592);
+            this.spContainer.SplitterDistance = 198;
             this.spContainer.SplitterWidth = 3;
             this.spContainer.TabIndex = 0;
+            // 
+            // cbxDepartureBoard
+            // 
+            this.cbxDepartureBoard.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cbxDepartureBoard.FormattingEnabled = true;
+            this.cbxDepartureBoard.Location = new System.Drawing.Point(685, 83);
+            this.cbxDepartureBoard.Name = "cbxDepartureBoard";
+            this.cbxDepartureBoard.Size = new System.Drawing.Size(127, 21);
+            this.cbxDepartureBoard.TabIndex = 11;
+            this.cbxDepartureBoard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxDepartureBoard_TextChanged);
             // 
             // gbWeiteres
             // 
@@ -143,18 +155,19 @@
             this.btnSendEmail.Text = "Mailen";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             // 
-            // btnToggleView
+            // btnStationBoard
             // 
-            this.btnToggleView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnStationBoard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToggleView.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToggleView.Location = new System.Drawing.Point(685, 29);
-            this.btnToggleView.Name = "btnToggleView";
-            this.btnToggleView.Size = new System.Drawing.Size(127, 68);
-            this.btnToggleView.TabIndex = 7;
-            this.btnToggleView.Text = "Abfahrtstafel";
-            this.btnToggleView.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnToggleView.UseVisualStyleBackColor = true;
+            this.btnStationBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStationBoard.Location = new System.Drawing.Point(685, 29);
+            this.btnStationBoard.Name = "btnStationBoard";
+            this.btnStationBoard.Size = new System.Drawing.Size(127, 54);
+            this.btnStationBoard.TabIndex = 7;
+            this.btnStationBoard.Text = "Abfahrtstafel";
+            this.btnStationBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnStationBoard.UseVisualStyleBackColor = true;
+            this.btnStationBoard.Click += new System.EventHandler(this.btnStationBoard_Click);
             // 
             // btnSearch
             // 
@@ -163,7 +176,7 @@
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSearch.Enabled = false;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(685, 104);
+            this.btnSearch.Location = new System.Drawing.Point(685, 121);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(127, 59);
@@ -242,8 +255,8 @@
             this.gbLocation.Controls.Add(this.btnChangeTbx);
             this.gbLocation.Controls.Add(this.cbxTargetLocation);
             this.gbLocation.Controls.Add(this.cbxStartLocation);
-            this.gbLocation.Controls.Add(this.btnMapZielStation);
-            this.gbLocation.Controls.Add(this.btnMapStartStation);
+            this.gbLocation.Controls.Add(this.btnMapTargetLocation);
+            this.gbLocation.Controls.Add(this.btnMapStartLocation);
             this.gbLocation.Controls.Add(this.lbZiel);
             this.gbLocation.Controls.Add(this.lbStart);
             this.gbLocation.Location = new System.Drawing.Point(11, 26);
@@ -280,7 +293,7 @@
             this.cbxTargetLocation.Name = "cbxTargetLocation";
             this.cbxTargetLocation.Size = new System.Drawing.Size(111, 21);
             this.cbxTargetLocation.TabIndex = 7;
-            this.cbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxTargetLocation_TextChanged);
+            this.cbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxTargetLocation_TextChanged);
             // 
             // cbxStartLocation
             // 
@@ -290,27 +303,27 @@
             this.cbxStartLocation.Name = "cbxStartLocation";
             this.cbxStartLocation.Size = new System.Drawing.Size(111, 21);
             this.cbxStartLocation.TabIndex = 6;
-            this.cbxStartLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStartLocation_TextChanged);
+            this.cbxStartLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxStartLocation_TextChanged);
             // 
-            // btnMapZielStation
+            // btnMapTargetLocation
             // 
-            this.btnMapZielStation.Enabled = false;
-            this.btnMapZielStation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
-            this.btnMapZielStation.Location = new System.Drawing.Point(15, 85);
-            this.btnMapZielStation.Name = "btnMapZielStation";
-            this.btnMapZielStation.Size = new System.Drawing.Size(47, 42);
-            this.btnMapZielStation.TabIndex = 5;
-            this.btnMapZielStation.UseVisualStyleBackColor = true;
+            this.btnMapTargetLocation.Enabled = false;
+            this.btnMapTargetLocation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
+            this.btnMapTargetLocation.Location = new System.Drawing.Point(15, 85);
+            this.btnMapTargetLocation.Name = "btnMapTargetLocation";
+            this.btnMapTargetLocation.Size = new System.Drawing.Size(47, 42);
+            this.btnMapTargetLocation.TabIndex = 5;
+            this.btnMapTargetLocation.UseVisualStyleBackColor = true;
             // 
-            // btnMapStartStation
+            // btnMapStartLocation
             // 
-            this.btnMapStartStation.Enabled = false;
-            this.btnMapStartStation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
-            this.btnMapStartStation.Location = new System.Drawing.Point(15, 33);
-            this.btnMapStartStation.Name = "btnMapStartStation";
-            this.btnMapStartStation.Size = new System.Drawing.Size(47, 45);
-            this.btnMapStartStation.TabIndex = 4;
-            this.btnMapStartStation.UseVisualStyleBackColor = true;
+            this.btnMapStartLocation.Enabled = false;
+            this.btnMapStartLocation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
+            this.btnMapStartLocation.Location = new System.Drawing.Point(15, 33);
+            this.btnMapStartLocation.Name = "btnMapStartLocation";
+            this.btnMapStartLocation.Size = new System.Drawing.Size(47, 45);
+            this.btnMapStartLocation.TabIndex = 4;
+            this.btnMapStartLocation.UseVisualStyleBackColor = true;
             // 
             // lbZiel
             // 
@@ -358,7 +371,7 @@
             this.gridResult.RowHeadersVisible = false;
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridResult.Size = new System.Drawing.Size(835, 252);
+            this.gridResult.Size = new System.Drawing.Size(835, 339);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
@@ -421,7 +434,7 @@
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 352);
+            this.ClientSize = new System.Drawing.Size(837, 472);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -453,10 +466,10 @@
         private System.Windows.Forms.Button btnDeparture;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnToggleView;
+        private System.Windows.Forms.Button btnStationBoard;
         private System.Windows.Forms.DataGridView gridResult;
-        private System.Windows.Forms.Button btnMapZielStation;
-        private System.Windows.Forms.Button btnMapStartStation;
+        private System.Windows.Forms.Button btnMapTargetLocation;
+        private System.Windows.Forms.Button btnMapStartLocation;
         private System.Windows.Forms.Button btnSendEmail;
         private System.Windows.Forms.TextBox tbxMail;
         private System.Windows.Forms.GroupBox gbWeiteres;
@@ -474,6 +487,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Kante_Ankunftsort;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnChangeTbx;
+        private System.Windows.Forms.ComboBox cbxDepartureBoard;
     }
 }
 

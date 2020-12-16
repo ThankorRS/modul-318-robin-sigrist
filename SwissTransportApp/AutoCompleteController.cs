@@ -9,7 +9,6 @@ namespace SwissTransportApp
     class AutoCompleteController
     {
         Transport transp = new Transport();
-
         // check if the key up down or enter is
         public bool CheckFireEvent(KeyEventArgs e)
         {
