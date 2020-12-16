@@ -12,7 +12,7 @@ namespace SwissTransportApp
         // check if the key up down or enter is
         public bool CheckFireEvent(KeyEventArgs e)
         {
-            if (e.KeyCode != Keys.Down && e.KeyCode != Keys.Up && e.KeyCode != Keys.Enter)
+            if (e.KeyCode != Keys.Down && e.KeyCode != Keys.Up && e.KeyCode != Keys.Enter && e.KeyCode != Keys.Left && e.KeyCode != Keys.Right)
             {
                 return false;
             }

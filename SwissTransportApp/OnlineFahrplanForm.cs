@@ -125,19 +125,23 @@ namespace SwissTransportApp
 
             return emailText;
         }
-
+        // Click handler for generating a Mail with the connections
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (cbxStartLocation.Text != "" || cbxStartLocation.Text.Length != 0)
             {
                 Cursor.Current = Cursors.WaitCursor;
+                int isArrival = 0;
                 string Date = DateTime.Parse(datePicker.Text).ToString("dd.MM.yyyy");
                 string Time = DateTime.Parse(timePicker.Text).ToString("HH:mm");
                 try
                 {
                     if(!departureBoard && (cbxTargetLocation.Text != "" || cbxTargetLocation.Text.Length != 0))
                     {
-                        Connections Connections = transp.GetConnections(cbxStartLocation.Text, cbxTargetLocation.Text, Time, Date);
+                        if (btnArrival.Enabled == false)
+                            isArrival = 1;
+
+                        Connections Connections = transp.GetConnections(cbxStartLocation.Text, cbxTargetLocation.Text, Time, Date, isArrival.ToString());
                         if (Connections.ConnectionList.Count != 0)
                         {
                             RenewConnections(Connections);
@@ -154,6 +158,7 @@ namespace SwissTransportApp
                 }
             }
         }
+        // Renew in DataGrid the Connections after Search Button is pressd
         private void RenewConnections(Connections connections)
         {
             gridResult.Rows.Clear();
@@ -182,12 +187,21 @@ namespace SwissTransportApp
                 });
             }
         }
+        // Autocomplete for Start Location using UpdateAutocomplete();
         private void ComboBoxStartLocation_TextChanged(object sender, KeyEventArgs e)
         {
            // if fire event is not true (not key up, down, enter) update ComboBox
            if (!AutoComplete.CheckFireEvent(e))
            {
-               UpdateAutoComplete(cbxStartLocation);
+                if (cbxStartLocation.Text.Length >= 1)
+                {
+                    if (cbxStartLocation.Items.Count >= 1)
+                    {
+                        // cbxStartLocation.Items.Clear();
+                        cbxStartLocation.SelectionStart = cbxStartLocation.Text.Length + 1;
+                    }
+                    UpdateAutoComplete(cbxStartLocation);
+                }
            }
            if (cbxStartLocation.Text.Length != 0)
            {
@@ -198,14 +212,23 @@ namespace SwissTransportApp
                 btnMapStartLocation.Enabled = false;
            }
             CheckStartTargetCbxEmpty();
-        }        
+        }
+        // Autocomplete for Target Location using UpdateAutocomplete();
         private void ComboBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
         {
-           if (AutoComplete.CheckFireEvent(e))
+           if (!AutoComplete.CheckFireEvent(e))
            {
-               UpdateAutoComplete(cbxTargetLocation);
-           }
+                if (cbxTargetLocation.Text.Length >= 3)
+                {
+                    if (cbxTargetLocation.Items.Count >= 1)
+                    {
+                        cbxTargetLocation.Items.Clear();
 
+                        cbxTargetLocation.SelectionStart = cbxTargetLocation.Text.Length + 1;
+                    }
+                    UpdateAutoComplete(cbxTargetLocation);
+                }
+           }
            if (cbxTargetLocation.Text.Length != 0)
            {
                btnMapTargetLocation.Enabled = true;
@@ -216,29 +239,45 @@ namespace SwissTransportApp
            }
             CheckStartTargetCbxEmpty();
         }
+        // Autocomplete for Departure Board using UpdateAutocomplete();
         private void ComboBoxDepartureBoard_TextChanged(object sender, KeyEventArgs e)
         {
-            if (AutoComplete.CheckFireEvent(e))
+            if (!AutoComplete.CheckFireEvent(e))
             {
-                UpdateAutoComplete(cbxDepartureBoard);
+                if (cbxDepartureBoard.Text.Length >= 3)
+                {
+                    if (cbxDepartureBoard.Items.Count >= 1)
+                    {
+                        cbxDepartureBoard.Items.Clear();
+                        cbxDepartureBoard.SelectionStart = cbxDepartureBoard.Text.Length + 1;
+                    }
+                    UpdateAutoComplete(cbxDepartureBoard);
+                }
             }
         }
+        // function to have a intellisense feeling in the form
         private void UpdateAutoComplete(ComboBox cbx)
         {
+            string item = cbx.Text;
             while (cbx.Items.Count > 0)
             {
                 cbx.Items.RemoveAt(0);
             }
             List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
+            cbx.Items.Add(item);
             foreach (string station in stations)
             {
                 if (station != null)
                 {
-                cbx.Items.Add(station);
+                    cbx.Items.Add(station);
                 }
             }
             cbx.DroppedDown = true;
+            cbx.SelectedIndex = 0;
+            cbx.SelectionStart = cbx.Text.Length + 1;
+            cbx.SelectionLength = 0;
         }
+        // Funtion to check if eighter Start or Target Location is empty
         private void CheckStartTargetCbxEmpty()
         {
             if ((cbxStartLocation.Text.Length != 0 && cbxStartLocation.Text != "") && (cbxTargetLocation.Text.Length != 0 && cbxTargetLocation.Text != ""))
@@ -250,7 +289,7 @@ namespace SwissTransportApp
                 btnSearch.Enabled = false;
             }
         }
-
+        // Click handler for the Station Board 
         private void btnStationBoard_Click(object sender, EventArgs e)
         {
             string stationID = "";
@@ -273,6 +312,7 @@ namespace SwissTransportApp
             }
 
         }
+        // Function to update the Stationboard
         private void StationBoardUpdate(StationBoardRoot stationBoardRoot)
         {
             int i = 0;
@@ -294,4 +334,3 @@ namespace SwissTransportApp
         }
     }
 }
-

@@ -297,6 +297,7 @@
             // 
             // cbxStartLocation
             // 
+            this.cbxStartLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cbxStartLocation.Cursor = System.Windows.Forms.Cursors.Default;
             this.cbxStartLocation.FormattingEnabled = true;
             this.cbxStartLocation.Location = new System.Drawing.Point(65, 62);
@@ -371,7 +372,7 @@
             this.gridResult.RowHeadersVisible = false;
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridResult.Size = new System.Drawing.Size(835, 339);
+            this.gridResult.Size = new System.Drawing.Size(835, 340);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
