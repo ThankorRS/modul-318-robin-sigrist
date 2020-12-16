@@ -100,6 +100,13 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GMapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GMapForm.Designer.cs">
+      <DependentUpon>GMapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GMaps.cs" />
     <Compile Include="OnlineFahrplanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +117,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GMapForm.resx">
+      <DependentUpon>GMapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnlineFahrplanForm.resx">
       <DependentUpon>OnlineFahrplanForm.cs</DependentUpon>
