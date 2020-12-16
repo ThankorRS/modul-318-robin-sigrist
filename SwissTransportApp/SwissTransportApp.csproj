@@ -100,13 +100,13 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GMapForm.cs">
+    <Compile Include="GoogleMaps.cs" />
+    <Compile Include="GoogleMapsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GMapForm.Designer.cs">
-      <DependentUpon>GMapForm.cs</DependentUpon>
+    <Compile Include="GoogleMapsForm.Designer.cs">
+      <DependentUpon>GoogleMapsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GMaps.cs" />
     <Compile Include="OnlineFahrplanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,8 +118,8 @@
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GMapForm.resx">
-      <DependentUpon>GMapForm.cs</DependentUpon>
+    <EmbeddedResource Include="GoogleMapsForm.resx">
+      <DependentUpon>GoogleMapsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OnlineFahrplanForm.resx">
       <DependentUpon>OnlineFahrplanForm.cs</DependentUpon>
@@ -134,6 +134,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
