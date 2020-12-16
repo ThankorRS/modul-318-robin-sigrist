@@ -332,7 +332,7 @@ namespace SwissTransportApp
 
         private void btnMapStartLocation_Click(object sender, EventArgs e)
         {
-            GoogleMaps.Show(cbxStartLocation);
+            GoogleMaps.Show(cbxStartLocation.Text);
         }
     }
 }
