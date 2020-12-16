@@ -22,17 +22,17 @@
             this.client?.Dispose();
         }
 
-        public Task<string> GetAsyncString(Uri uri)
+        public string GetString(Uri uri)
         {
             if (uri is null)
             {
                 throw new ArgumentNullException(nameof(uri));
             }
 
-            return this.client.DownloadStringTaskAsync(uri);
+            return this.client.DownloadString(uri);
         }
 
-        public async Task<TObject> GetAsyncObject<TObject>(Uri uri, Func<string, TObject> converter)
+        public TObject GetObject<TObject>(Uri uri, Func<string, TObject> converter)
         {
             if (uri is null)
             {
@@ -44,7 +44,7 @@
                 throw new ArgumentNullException(nameof(uri));
             }
 
-            return converter.Invoke(await GetAsyncString(uri));
+            return converter.Invoke(GetString(uri));
         }
     }
 }

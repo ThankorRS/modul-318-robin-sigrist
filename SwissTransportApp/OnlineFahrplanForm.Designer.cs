@@ -50,7 +50,7 @@
             this.btnMapStartStation = new System.Windows.Forms.Button();
             this.lbZiel = new System.Windows.Forms.Label();
             this.lbStart = new System.Windows.Forms.Label();
-            this.dgv = new System.Windows.Forms.DataGridView();
+            this.gridResult = new System.Windows.Forms.DataGridView();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Abfahrtsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Abfahrtzeit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             this.gbWeiteres.SuspendLayout();
             this.gbZeitDatum.SuspendLayout();
             this.gbLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridResult)).BeginInit();
             this.SuspendLayout();
             // 
             // spContainer
@@ -92,9 +92,9 @@
             // 
             // spContainer.Panel2
             // 
-            this.spContainer.Panel2.Controls.Add(this.dgv);
+            this.spContainer.Panel2.Controls.Add(this.gridResult);
             this.spContainer.Size = new System.Drawing.Size(838, 472);
-            this.spContainer.SplitterDistance = 230;
+            this.spContainer.SplitterDistance = 229;
             this.spContainer.SplitterWidth = 3;
             this.spContainer.TabIndex = 0;
             // 
@@ -169,8 +169,8 @@
             this.btnSearch.Size = new System.Drawing.Size(127, 59);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
-            this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // gbZeitDatum
             // 
@@ -332,17 +332,17 @@
             this.lbStart.TabIndex = 0;
             this.lbStart.Text = "Startort";
             // 
-            // dgv
+            // gridResult
             // 
-            this.dgv.AllowUserToAddRows = false;
-            this.dgv.AllowUserToDeleteRows = false;
-            this.dgv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gridResult.AllowUserToAddRows = false;
+            this.gridResult.AllowUserToDeleteRows = false;
+            this.gridResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridResult.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridResult.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gridResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Datum,
             this.Abfahrtsort,
             this.Abfahrtzeit,
@@ -351,15 +351,15 @@
             this.Dauer,
             this.Kante_Abfahrtsort,
             this.Kante_Ankunftsort});
-            this.dgv.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgv.Location = new System.Drawing.Point(3, 3);
-            this.dgv.Name = "dgv";
-            this.dgv.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dgv.RowHeadersVisible = false;
-            this.dgv.RowHeadersWidth = 123;
-            this.dgv.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.Size = new System.Drawing.Size(835, 254);
-            this.dgv.TabIndex = 0;
+            this.gridResult.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gridResult.Location = new System.Drawing.Point(3, 3);
+            this.gridResult.Name = "gridResult";
+            this.gridResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gridResult.RowHeadersVisible = false;
+            this.gridResult.RowHeadersWidth = 123;
+            this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridResult.Size = new System.Drawing.Size(835, 252);
+            this.gridResult.TabIndex = 0;
             // 
             // Datum
             // 
@@ -421,11 +421,11 @@
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 375);
+            this.ClientSize = new System.Drawing.Size(837, 352);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(65, 61);
+            this.MinimumSize = new System.Drawing.Size(51, 61);
             this.Name = "OnlineFahrplanForm";
             this.Text = "SBB CFF FFS - Fahrplan";
             this.spContainer.Panel1.ResumeLayout(false);
@@ -437,7 +437,7 @@
             this.gbZeitDatum.ResumeLayout(false);
             this.gbLocation.ResumeLayout(false);
             this.gbLocation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridResult)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -454,7 +454,7 @@
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnToggleView;
-        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.DataGridView gridResult;
         private System.Windows.Forms.Button btnMapZielStation;
         private System.Windows.Forms.Button btnMapStartStation;
         private System.Windows.Forms.Button btnSendEmail;

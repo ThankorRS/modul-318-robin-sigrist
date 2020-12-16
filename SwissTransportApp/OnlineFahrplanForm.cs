@@ -38,7 +38,7 @@ namespace SwissTransportApp
             btnDeparture.Enabled = false;
             btnDeparture.BackColor = Color.Green;
             btnArrival.Enabled = true;
-            btnSearch.Enabled = false;
+            btnSearch.Enabled = true;
             btnSendEmail.Enabled = false;
             gbLocation.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbWeiteres.BackColor = Color.FromArgb(100, 255, 255, 255);
@@ -114,7 +114,7 @@ namespace SwissTransportApp
         {
             string emailText = "";
             emailText += "Verbindungen: ";
-            foreach (DataGridViewRow row in dgv.SelectedRows)
+            foreach (DataGridViewRow row in gridResult.SelectedRows)
             {
                 emailText += "\n";
                 foreach (DataGridViewCell cell in row.Cells)
@@ -125,54 +125,91 @@ namespace SwissTransportApp
 
             return emailText;
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            Connections Connections = transp.GetConnections(cbxStartLocation.Text, cbxTargetLocation.Text);
+            if (Connections.ConnectionList.Count != 0)
+            {
+                RenewConnections(Connections);
+            }
+        }
+        private void RenewConnections(Connections connections)
+        {
+            gridResult.Rows.Clear();
+            gridResult.Columns.Clear();
+            gridResult.Columns.Add("Datum", "Datum");
+            gridResult.Columns.Add("Abfahrtsort", "Abfahrtsort");
+            gridResult.Columns.Add("Abfahrtzeit", "Abfahrtzeit");
+            gridResult.Columns.Add("Ankunftsort", "Ankunftsort");
+            gridResult.Columns.Add("Ankunftzeit", "Ankunftzeit");
+            gridResult.Columns.Add("Dauer", "Dauer");
+            gridResult.Columns.Add("Kante Abfahrtsort", "Kante Abfahrtsort");
+            gridResult.Columns.Add("Kante Ankunftsort", "Kante Ankunftsort");
+
+            foreach (Connection connection in connections.ConnectionList)
+            {
+                TimeSpan duration = TimeSpan.Parse(connection.Duration.Replace("d", ":"));
+                gridResult.Rows.Add(new[] {
+                    DateTime.Parse(connection.From.Departure.Value.ToString()).ToString("dd.MM.yyyy"), 
+                    connection.From.Station.Name, 
+                    DateTime.Parse(connection.From.Departure.Value.ToString()).ToString("HH:mm"), 
+                    connection.To.Station.Name, 
+                    DateTime.Parse(connection.To.Arrival.ToString()).ToString("HH:mm"), 
+                    duration.ToString(@"hh\:mm"), 
+                    connection.From.Platform, 
+                    connection.To.Platform 
+                });
+            }
+        }
         private void TextBoxStartLocation_TextChanged(object sender, KeyEventArgs e)
         {
-            // if fire event is not true (not key up, down, enter) update ComboBox
-            if (!AutoComplete.CheckFireEvent(e))
-            {
-                UpdateAutoComplete(cbxStartLocation);
-            }
-            if (cbxStartLocation.Text.Length != 0)
-            {
-                btnMapZielStation.Enabled = true;
-            }
-            else
-            {
-                btnMapZielStation.Enabled = false;
-            }
+           // if fire event is not true (not key up, down, enter) update ComboBox
+           if (!AutoComplete.CheckFireEvent(e))
+           {
+               UpdateAutoComplete(cbxStartLocation);
+           }
+           if (cbxStartLocation.Text.Length != 0)
+           {
+               btnMapZielStation.Enabled = true;
+           }
+           else
+           {
+               btnMapZielStation.Enabled = false;
+           }
         }        
         private void TextBoxTargetLocation_TextChanged(object sender, KeyEventArgs e)
         {
-            if (AutoComplete.CheckFireEvent(e))
-            {
-                UpdateAutoComplete(cbxTargetLocation);
-            }
+           if (AutoComplete.CheckFireEvent(e))
+           {
+               UpdateAutoComplete(cbxTargetLocation);
+           }
 
-            if (cbxTargetLocation.Text.Length != 0)
-            {
-                btnMapZielStation.Enabled = true;
-            }
-            else
-            {
-                btnMapZielStation.Enabled = false;
-            }
+           if (cbxTargetLocation.Text.Length != 0)
+           {
+               btnMapZielStation.Enabled = true;
+           }
+           else
+           {
+               btnMapZielStation.Enabled = false;
+           }
         }
         private void UpdateAutoComplete(ComboBox cbx)
         {
-            while (cbx.Items.Count > 0)
-            {
-                cbx.Items.RemoveAt(0);
-            }
-            //cbx.Items.Add(AutoComplete.GenerateAutocomplete(cbx.Text));
-            List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
-            foreach (string station in stations)
-            {
-                if (station != null)
-                {
-                    cbx.Items.Add(station);
-                }
-            }
-            cbx.DroppedDown = true;
+           while (cbx.Items.Count > 0)
+           {
+               cbx.Items.RemoveAt(0);
+           }
+           //cbx.Items.Add(AutoComplete.GenerateAutocomplete(cbx.Text));
+           List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
+           foreach (string station in stations)
+           {
+               if (station != null)
+               {
+                   cbx.Items.Add(station);
+               }
+           }
+           cbx.DroppedDown = true;
         }
     }
 }
