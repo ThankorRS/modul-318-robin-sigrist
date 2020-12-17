@@ -39,14 +39,12 @@
             Assert.IsNotNull(connections);
         }
 
-        /*[TestMethod]
-        public void GenerateAutocomplete()
+        [TestMethod]
+        public void ConnectionsNotFailTest()
         {
-            testee = new OnlineFahrplanForm();
-            AutoCompleteController intellisenseController = new AutoCompleteController();
-            List<string> actual = intellisenseController.GenerateAutocomplete("Luzern");
-
-            Assert.IsNotNull(actual);
-        }*/
+            testee = new Transport();
+            var connections = this.testee.GetConnections("Malters", "Luzern", "13:00", "22-12-2015", "1");
+            Assert.IsNotNull(connections);
+        }
     }
 }
