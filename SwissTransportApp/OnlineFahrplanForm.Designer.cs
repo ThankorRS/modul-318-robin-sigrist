@@ -76,8 +76,8 @@
             this.spContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.spContainer.Location = new System.Drawing.Point(-2, 1);
-            this.spContainer.Margin = new System.Windows.Forms.Padding(2);
+            this.spContainer.Location = new System.Drawing.Point(-6, 3);
+            this.spContainer.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.spContainer.Name = "spContainer";
             this.spContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -95,9 +95,9 @@
             // spContainer.Panel2
             // 
             this.spContainer.Panel2.Controls.Add(this.gridResult);
-            this.spContainer.Size = new System.Drawing.Size(838, 592);
-            this.spContainer.SplitterDistance = 197;
-            this.spContainer.SplitterWidth = 3;
+            this.spContainer.Size = new System.Drawing.Size(2654, 1685);
+            this.spContainer.SplitterDistance = 560;
+            this.spContainer.SplitterWidth = 9;
             this.spContainer.TabIndex = 0;
             // 
             // cbxDepartureBoard
@@ -106,9 +106,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxDepartureBoard.Cursor = System.Windows.Forms.Cursors.Default;
             this.cbxDepartureBoard.FormattingEnabled = true;
-            this.cbxDepartureBoard.Location = new System.Drawing.Point(685, 83);
+            this.cbxDepartureBoard.Location = new System.Drawing.Point(2169, 236);
+            this.cbxDepartureBoard.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cbxDepartureBoard.Name = "cbxDepartureBoard";
-            this.cbxDepartureBoard.Size = new System.Drawing.Size(127, 21);
+            this.cbxDepartureBoard.Size = new System.Drawing.Size(394, 45);
             this.cbxDepartureBoard.TabIndex = 11;
             this.cbxDepartureBoard.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxDepartureBoard_TextChanged);
             // 
@@ -118,18 +119,21 @@
             this.gbWeiteres.Controls.Add(this.btnShowMap);
             this.gbWeiteres.Controls.Add(this.tbxMail);
             this.gbWeiteres.Controls.Add(this.btnSendEmail);
-            this.gbWeiteres.Location = new System.Drawing.Point(412, 32);
+            this.gbWeiteres.Location = new System.Drawing.Point(1305, 91);
+            this.gbWeiteres.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.gbWeiteres.Name = "gbWeiteres";
-            this.gbWeiteres.Size = new System.Drawing.Size(251, 146);
+            this.gbWeiteres.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.gbWeiteres.Size = new System.Drawing.Size(795, 416);
             this.gbWeiteres.TabIndex = 10;
             this.gbWeiteres.TabStop = false;
             this.gbWeiteres.Text = "Weiteres";
             // 
             // btnShowMap
             // 
-            this.btnShowMap.Location = new System.Drawing.Point(6, 38);
+            this.btnShowMap.Location = new System.Drawing.Point(19, 108);
+            this.btnShowMap.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnShowMap.Name = "btnShowMap";
-            this.btnShowMap.Size = new System.Drawing.Size(238, 23);
+            this.btnShowMap.Size = new System.Drawing.Size(754, 65);
             this.btnShowMap.TabIndex = 10;
             this.btnShowMap.Text = "Nächste Stationen anzeigen";
             this.btnShowMap.UseVisualStyleBackColor = true;
@@ -138,9 +142,10 @@
             // 
             this.tbxMail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbxMail.Location = new System.Drawing.Point(6, 95);
+            this.tbxMail.Location = new System.Drawing.Point(19, 270);
+            this.tbxMail.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.tbxMail.Name = "tbxMail";
-            this.tbxMail.Size = new System.Drawing.Size(160, 20);
+            this.tbxMail.Size = new System.Drawing.Size(498, 44);
             this.tbxMail.TabIndex = 9;
             this.tbxMail.Tag = "";
             this.tbxMail.Text = "max.mustermann@example.com";
@@ -151,9 +156,10 @@
             this.btnSendEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSendEmail.Enabled = false;
-            this.btnSendEmail.Location = new System.Drawing.Point(174, 88);
+            this.btnSendEmail.Location = new System.Drawing.Point(551, 250);
+            this.btnSendEmail.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(70, 44);
+            this.btnSendEmail.Size = new System.Drawing.Size(222, 125);
             this.btnSendEmail.TabIndex = 8;
             this.btnSendEmail.Text = "Verbindung senden";
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -163,9 +169,10 @@
             // 
             this.btnStationBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStationBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStationBoard.Location = new System.Drawing.Point(685, 29);
+            this.btnStationBoard.Location = new System.Drawing.Point(2169, 83);
+            this.btnStationBoard.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnStationBoard.Name = "btnStationBoard";
-            this.btnStationBoard.Size = new System.Drawing.Size(127, 54);
+            this.btnStationBoard.Size = new System.Drawing.Size(402, 154);
             this.btnStationBoard.TabIndex = 7;
             this.btnStationBoard.Text = "Abfahrtstafel";
             this.btnStationBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
@@ -178,10 +185,10 @@
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSearch.Enabled = false;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(685, 121);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearch.Location = new System.Drawing.Point(2169, 344);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(127, 59);
+            this.btnSearch.Size = new System.Drawing.Size(402, 168);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -196,21 +203,21 @@
             this.gbZeitDatum.Controls.Add(this.datePicker);
             this.gbZeitDatum.Controls.Add(this.timePicker);
             this.gbZeitDatum.Controls.Add(this.btnDeparture);
-            this.gbZeitDatum.Location = new System.Drawing.Point(211, 32);
-            this.gbZeitDatum.Margin = new System.Windows.Forms.Padding(2);
+            this.gbZeitDatum.Location = new System.Drawing.Point(668, 91);
+            this.gbZeitDatum.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbZeitDatum.Name = "gbZeitDatum";
-            this.gbZeitDatum.Padding = new System.Windows.Forms.Padding(2);
-            this.gbZeitDatum.Size = new System.Drawing.Size(186, 146);
+            this.gbZeitDatum.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbZeitDatum.Size = new System.Drawing.Size(589, 416);
             this.gbZeitDatum.TabIndex = 4;
             this.gbZeitDatum.TabStop = false;
             this.gbZeitDatum.Text = "Zeit/Datum";
             // 
             // btnArrival
             // 
-            this.btnArrival.Location = new System.Drawing.Point(25, 66);
-            this.btnArrival.Margin = new System.Windows.Forms.Padding(2);
+            this.btnArrival.Location = new System.Drawing.Point(79, 188);
+            this.btnArrival.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnArrival.Name = "btnArrival";
-            this.btnArrival.Size = new System.Drawing.Size(140, 24);
+            this.btnArrival.Size = new System.Drawing.Size(443, 68);
             this.btnArrival.TabIndex = 3;
             this.btnArrival.Text = "Ankunft um";
             this.btnArrival.UseVisualStyleBackColor = true;
@@ -219,30 +226,30 @@
             // datePicker
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePicker.Location = new System.Drawing.Point(79, 106);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.datePicker.Location = new System.Drawing.Point(250, 302);
+            this.datePicker.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(89, 20);
+            this.datePicker.Size = new System.Drawing.Size(273, 44);
             this.datePicker.TabIndex = 2;
             // 
             // timePicker
             // 
             this.timePicker.CustomFormat = "HH:mm";
             this.timePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.timePicker.Location = new System.Drawing.Point(25, 106);
-            this.timePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.timePicker.Location = new System.Drawing.Point(79, 302);
+            this.timePicker.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.timePicker.Name = "timePicker";
             this.timePicker.ShowUpDown = true;
-            this.timePicker.Size = new System.Drawing.Size(50, 20);
+            this.timePicker.Size = new System.Drawing.Size(150, 44);
             this.timePicker.TabIndex = 1;
             this.timePicker.Value = new System.DateTime(2020, 11, 26, 11, 22, 0, 0);
             // 
             // btnDeparture
             // 
-            this.btnDeparture.Location = new System.Drawing.Point(25, 27);
-            this.btnDeparture.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeparture.Location = new System.Drawing.Point(79, 77);
+            this.btnDeparture.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnDeparture.Name = "btnDeparture";
-            this.btnDeparture.Size = new System.Drawing.Size(140, 24);
+            this.btnDeparture.Size = new System.Drawing.Size(443, 68);
             this.btnDeparture.TabIndex = 0;
             this.btnDeparture.Text = "Abfahrt um";
             this.btnDeparture.UseVisualStyleBackColor = true;
@@ -261,28 +268,30 @@
             this.gbLocation.Controls.Add(this.btnMapStartLocation);
             this.gbLocation.Controls.Add(this.lbZiel);
             this.gbLocation.Controls.Add(this.lbStart);
-            this.gbLocation.Location = new System.Drawing.Point(11, 26);
-            this.gbLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.gbLocation.Location = new System.Drawing.Point(35, 74);
+            this.gbLocation.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.gbLocation.Name = "gbLocation";
-            this.gbLocation.Padding = new System.Windows.Forms.Padding(2);
-            this.gbLocation.Size = new System.Drawing.Size(188, 152);
+            this.gbLocation.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.gbLocation.Size = new System.Drawing.Size(595, 433);
             this.gbLocation.TabIndex = 0;
             this.gbLocation.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 15);
+            this.label1.Location = new System.Drawing.Point(241, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
+            this.label1.Size = new System.Drawing.Size(166, 37);
             this.label1.TabIndex = 9;
             this.label1.Text = "Umdrehen";
             // 
             // btnChangeTbx
             // 
-            this.btnChangeTbx.Location = new System.Drawing.Point(133, 7);
+            this.btnChangeTbx.Location = new System.Drawing.Point(421, 20);
+            this.btnChangeTbx.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnChangeTbx.Name = "btnChangeTbx";
-            this.btnChangeTbx.Size = new System.Drawing.Size(53, 28);
+            this.btnChangeTbx.Size = new System.Drawing.Size(168, 80);
             this.btnChangeTbx.TabIndex = 8;
             this.btnChangeTbx.Text = "<-->";
             this.btnChangeTbx.UseVisualStyleBackColor = true;
@@ -291,9 +300,10 @@
             // cbxTargetLocation
             // 
             this.cbxTargetLocation.FormattingEnabled = true;
-            this.cbxTargetLocation.Location = new System.Drawing.Point(65, 111);
+            this.cbxTargetLocation.Location = new System.Drawing.Point(206, 316);
+            this.cbxTargetLocation.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cbxTargetLocation.Name = "cbxTargetLocation";
-            this.cbxTargetLocation.Size = new System.Drawing.Size(111, 21);
+            this.cbxTargetLocation.Size = new System.Drawing.Size(343, 45);
             this.cbxTargetLocation.TabIndex = 7;
             this.cbxTargetLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxTargetLocation_TextChanged);
             // 
@@ -302,9 +312,10 @@
             this.cbxStartLocation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.cbxStartLocation.Cursor = System.Windows.Forms.Cursors.Default;
             this.cbxStartLocation.FormattingEnabled = true;
-            this.cbxStartLocation.Location = new System.Drawing.Point(65, 62);
+            this.cbxStartLocation.Location = new System.Drawing.Point(206, 176);
+            this.cbxStartLocation.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.cbxStartLocation.Name = "cbxStartLocation";
-            this.cbxStartLocation.Size = new System.Drawing.Size(111, 21);
+            this.cbxStartLocation.Size = new System.Drawing.Size(343, 45);
             this.cbxStartLocation.TabIndex = 6;
             this.cbxStartLocation.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxStartLocation_TextChanged);
             // 
@@ -312,9 +323,10 @@
             // 
             this.btnMapTargetLocation.Enabled = false;
             this.btnMapTargetLocation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
-            this.btnMapTargetLocation.Location = new System.Drawing.Point(15, 85);
+            this.btnMapTargetLocation.Location = new System.Drawing.Point(48, 242);
+            this.btnMapTargetLocation.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnMapTargetLocation.Name = "btnMapTargetLocation";
-            this.btnMapTargetLocation.Size = new System.Drawing.Size(47, 42);
+            this.btnMapTargetLocation.Size = new System.Drawing.Size(149, 120);
             this.btnMapTargetLocation.TabIndex = 5;
             this.btnMapTargetLocation.UseVisualStyleBackColor = true;
             this.btnMapTargetLocation.Click += new System.EventHandler(this.btnMapTargetLocation_Click);
@@ -323,9 +335,10 @@
             // 
             this.btnMapStartLocation.Enabled = false;
             this.btnMapStartLocation.Image = global::SwissTransportApp.Properties.Resources.map_ico;
-            this.btnMapStartLocation.Location = new System.Drawing.Point(15, 33);
+            this.btnMapStartLocation.Location = new System.Drawing.Point(48, 94);
+            this.btnMapStartLocation.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.btnMapStartLocation.Name = "btnMapStartLocation";
-            this.btnMapStartLocation.Size = new System.Drawing.Size(47, 45);
+            this.btnMapStartLocation.Size = new System.Drawing.Size(149, 128);
             this.btnMapStartLocation.TabIndex = 4;
             this.btnMapStartLocation.UseVisualStyleBackColor = true;
             this.btnMapStartLocation.Click += new System.EventHandler(this.btnMapStartLocation_Click);
@@ -333,20 +346,20 @@
             // lbZiel
             // 
             this.lbZiel.AutoSize = true;
-            this.lbZiel.Location = new System.Drawing.Point(66, 95);
-            this.lbZiel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbZiel.Location = new System.Drawing.Point(209, 270);
+            this.lbZiel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbZiel.Name = "lbZiel";
-            this.lbZiel.Size = new System.Drawing.Size(36, 13);
+            this.lbZiel.Size = new System.Drawing.Size(106, 37);
             this.lbZiel.TabIndex = 1;
             this.lbZiel.Text = "Zielort";
             // 
             // lbStart
             // 
             this.lbStart.AutoSize = true;
-            this.lbStart.Location = new System.Drawing.Point(63, 40);
-            this.lbStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStart.Location = new System.Drawing.Point(200, 114);
+            this.lbStart.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbStart.Name = "lbStart";
-            this.lbStart.Size = new System.Drawing.Size(41, 13);
+            this.lbStart.Size = new System.Drawing.Size(123, 37);
             this.lbStart.TabIndex = 0;
             this.lbStart.Text = "Startort";
             // 
@@ -371,6 +384,7 @@
             this.Kante_Ankunftsort});
             this.gridResult.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gridResult.Location = new System.Drawing.Point(0, 0);
+            this.gridResult.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.gridResult.Name = "gridResult";
             this.gridResult.ReadOnly = true;
             this.gridResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -378,7 +392,7 @@
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.gridResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gridResult.Size = new System.Drawing.Size(838, 154);
+            this.gridResult.Size = new System.Drawing.Size(2654, 441);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
@@ -440,13 +454,13 @@
             // OnlineFahrplanForm
             // 
             this.AcceptButton = this.btnSearch;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 352);
+            this.ClientSize = new System.Drawing.Size(2651, 1002);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(37, 61);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.MinimumSize = new System.Drawing.Size(39, 103);
             this.Name = "OnlineFahrplanForm";
             this.Text = "SBB CFF FFS - Fahrplan";
             this.spContainer.Panel1.ResumeLayout(false);

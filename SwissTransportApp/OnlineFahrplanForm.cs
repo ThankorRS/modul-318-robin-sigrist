@@ -95,13 +95,13 @@ namespace SwissTransportApp
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
             string emailText = GenerateMailText();
-            Process.Start("mailto: " + "?subject={SBB CFF FFS - Online Fahrplan}" + tbxMail.Text + "&body=" + emailText);
+            Process.Start("mailto: "+ tbxMail.Text + "?subject=SBB CFF FFS - Online Fahrplan" + "&body=" + emailText);
         }
         // generate Mail text to send on btn click
         private string GenerateMailText()
         {
             string emailText = "";
-            emailText += "Verbindungen: ";
+            emailText += "Verbindungen: \n";
             foreach (DataGridViewRow row in gridResult.SelectedRows)
             {
                 emailText += "\n";
@@ -329,7 +329,7 @@ namespace SwissTransportApp
         {
             GoogleMaps.Show(cbxTargetLocation.Text);
         }
-
+        // check if e-mail addres is changed
         private void tbxMail_TextChanged(object sender, EventArgs e)
         {
             if (tbxMail.Text.Length != 0 && tbxMail.Text != "")

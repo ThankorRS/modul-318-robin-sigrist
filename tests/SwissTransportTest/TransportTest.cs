@@ -1,7 +1,7 @@
 ﻿namespace SwissTransport
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-
+   
     using SwissTransport.Core;
 
     /// <summary>
@@ -38,5 +38,15 @@
 
             Assert.IsNotNull(connections);
         }
+
+        /*[TestMethod]
+        public void GenerateAutocomplete()
+        {
+            testee = new OnlineFahrplanForm();
+            AutoCompleteController intellisenseController = new AutoCompleteController();
+            List<string> actual = intellisenseController.GenerateAutocomplete("Luzern");
+
+            Assert.IsNotNull(actual);
+        }*/
     }
 }

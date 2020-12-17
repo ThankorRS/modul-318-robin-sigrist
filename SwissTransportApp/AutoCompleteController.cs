@@ -30,7 +30,8 @@ namespace SwissTransportApp
                 Stations stations = transp.GetStations(query);
                 foreach (Station station in stations.StationList)
                 {
-                    src.Add(station.Name);
+                    if (!string.IsNullOrEmpty(station.Name) && !string.IsNullOrEmpty(station.Id))
+                        src.Add(station.Name);
                 }
                 if (src.Count == 0)
                 {

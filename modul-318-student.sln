@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportApp", "SwissT
 		{D0262178-A48F-4DE0-807B-E76B63E39421} = {D0262178-A48F-4DE0-807B-E76B63E39421}
 	EndProjectSection
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SBB_Setup", "SBB_Setup\SBB_Setup.vdproj", "{9508BAEA-4AB1-424A-8266-14C667FC4BCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{BFAE0605-1249-4D6F-8FC1-C574AB9D55DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFAE0605-1249-4D6F-8FC1-C574AB9D55DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFAE0605-1249-4D6F-8FC1-C574AB9D55DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9508BAEA-4AB1-424A-8266-14C667FC4BCA}.Debug|Any CPU.ActiveCfg = Debug
+		{9508BAEA-4AB1-424A-8266-14C667FC4BCA}.Debug|Any CPU.Build.0 = Debug
+		{9508BAEA-4AB1-424A-8266-14C667FC4BCA}.Release|Any CPU.ActiveCfg = Release
+		{9508BAEA-4AB1-424A-8266-14C667FC4BCA}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
