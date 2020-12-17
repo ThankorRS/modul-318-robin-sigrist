@@ -15,20 +15,9 @@ namespace SwissTransportApp
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                Application.Run(new OnlineFahrplanForm());
-            }
-            catch(Exception)
-            {
-                MessageBox.Show("" +
-                    "Ein Fehler ist aufgetreten.\n Überprüfen der Eingabe ist notwendig.\n Falls die Station nicht aufgelistet wird, wenden Sie sich an die zuständige Software Firma.",
-                    "Ein seltsamer Fehler ist erschienen!",
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error
-                );
-            }
+            Application.SetCompatibleTextRenderingDefault(false);    
+            Application.Run(new OnlineFahrplanForm());
+
         }
     }
 }

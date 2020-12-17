@@ -2,25 +2,13 @@
 using SwissTransport.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Net.Mail;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Device.Location;
+
 
 namespace SwissTransportApp
-
-    /*
-     TODO
-        - screw the auto thing for the moment and focus on the main functions
-        - implement afterwards the auto thing ;)
-     */
 {
     partial class OnlineFahrplanForm : Form
     {

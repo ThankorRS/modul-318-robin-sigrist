@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-
 using GMap.NET;
-using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
+using System.Data.SQLite;
 
 namespace SwissTransportApp
 {
@@ -24,14 +23,16 @@ namespace SwissTransportApp
         {
             gmapCtrl.DragButton = MouseButtons.Left;
             gmapCtrl.CanDragMap = true;
-            gmapCtrl.MapProvider = GMapProviders.GoogleMap;
+            gmapCtrl.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
             gmapCtrl.Position = new PointLatLng(XCoordinate, YCoordinate);
             gmapCtrl.MinZoom = 0;
             gmapCtrl.MaxZoom = 24;
             gmapCtrl.Zoom = 9;
             gmapCtrl.AutoScroll = true;
-            GMapOverlay markersOverlay = new GMapOverlay("marker1");
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(XCoordinate, YCoordinate), GMarkerGoogleType.red);
+            GMapOverlay markersOverlay = new GMapOverlay("marker");
+            GMapMarker marker = new GMarkerGoogle(
+                new PointLatLng(XCoordinate, YCoordinate),
+                GMarkerGoogleType.blue_pushpin);
             markersOverlay.Markers.Add(marker);
             gmapCtrl.Overlays.Add(markersOverlay);
         }

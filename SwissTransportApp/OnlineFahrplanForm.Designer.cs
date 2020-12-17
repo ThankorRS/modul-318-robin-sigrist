@@ -102,6 +102,8 @@
             // 
             // cbxDepartureBoard
             // 
+            this.cbxDepartureBoard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxDepartureBoard.Cursor = System.Windows.Forms.Cursors.Default;
             this.cbxDepartureBoard.FormattingEnabled = true;
             this.cbxDepartureBoard.Location = new System.Drawing.Point(685, 83);
@@ -157,8 +159,7 @@
             // 
             // btnStationBoard
             // 
-            this.btnStationBoard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStationBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStationBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStationBoard.Location = new System.Drawing.Point(685, 29);
             this.btnStationBoard.Name = "btnStationBoard";
@@ -171,8 +172,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnSearch.Enabled = false;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -373,7 +373,7 @@
             this.gridResult.RowHeadersVisible = false;
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridResult.Size = new System.Drawing.Size(835, 341);
+            this.gridResult.Size = new System.Drawing.Size(835, 342);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
