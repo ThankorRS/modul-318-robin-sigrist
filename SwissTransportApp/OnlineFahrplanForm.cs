@@ -27,6 +27,7 @@ namespace SwissTransportApp
             btnArrival.Enabled = true;
             btnSearch.Enabled = false;
             btnSendEmail.Enabled = false;
+            btnStationBoard.Enabled = false;
             gbLocation.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbWeiteres.BackColor = Color.FromArgb(100, 255, 255, 255);
             gbZeitDatum.BackColor = Color.FromArgb(100, 255, 255, 255);
@@ -187,10 +188,10 @@ namespace SwissTransportApp
            // if fire event is not true (not key up, down, enter) update ComboBox
            if (!AutoComplete.CheckFireEvent(e))
            {
-                if (cbxStartLocation.Text.Length > 0)
-                {
-                    UpdateAutoComplete(cbxStartLocation);
-                }
+           if (cbxStartLocation.Text.Length > 1)
+            {
+                UpdateAutoComplete(cbxStartLocation);
+           }
            }
            if (cbxStartLocation.Text.Length != 0)
            {
@@ -207,7 +208,7 @@ namespace SwissTransportApp
         {
            if (!AutoComplete.CheckFireEvent(e))
            {
-                if (cbxTargetLocation.Text.Length > 0)
+                if (cbxTargetLocation.Text.Length > 1)
                 {
                     UpdateAutoComplete(cbxTargetLocation);
                 }
@@ -227,8 +228,9 @@ namespace SwissTransportApp
         {
             if (!AutoComplete.CheckFireEvent(e))
             {
-                if (cbxDepartureBoard.Text.Length > 0)
+                if (cbxDepartureBoard.Text.Length > 1)
                 {
+                    btnStationBoard.Enabled = true;
                     UpdateAutoComplete(cbxDepartureBoard);
                 }
             }
@@ -239,7 +241,7 @@ namespace SwissTransportApp
             string item = cbx.Text;
             while (cbx.Items.Count > 0)
             {
-                cbx.Items.RemoveAt(0);
+                    cbx.Items.RemoveAt(0);
             }
             List<string> stations = AutoComplete.GenerateAutocomplete(cbx.Text);
             foreach (string station in stations)
@@ -317,10 +319,49 @@ namespace SwissTransportApp
                 }
             }
         }
-
+        // Open Start Location Map in Google Maps
         private void btnMapStartLocation_Click(object sender, EventArgs e)
         {
             GoogleMaps.Show(cbxStartLocation.Text);
+        }
+        // Open Target Location Map in Google Maps
+        private void btnMapTargetLocation_Click(object sender, EventArgs e)
+        {
+            GoogleMaps.Show(cbxTargetLocation.Text);
+        }
+
+        private void tbxMail_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxMail.Text.Length != 0 && tbxMail.Text != "")
+            {
+                btnSendEmail.Enabled = true;
+            }
+            else
+            {
+                btnSendEmail.Enabled = false;
+            }
+        }
+        // Dialog handler for telling user input incorrect
+        public static string ShowDialog(string text, string caption)
+        {
+            Form prompt = new Form()
+            {
+                Width = 500,
+                Height = 150,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                Text = caption,
+                StartPosition = FormStartPosition.CenterScreen
+            };
+            Label textLabel = new Label() { Left = 50, Top = 20, Text = text };
+            TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
+            Button confirmation = new Button() { Text = "Ok", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
+            confirmation.Click += (sender, e) => { prompt.Close(); };
+            prompt.Controls.Add(textBox);
+            prompt.Controls.Add(confirmation);
+            prompt.Controls.Add(textLabel);
+            prompt.AcceptButton = confirmation;
+
+            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : "";
         }
     }
 }

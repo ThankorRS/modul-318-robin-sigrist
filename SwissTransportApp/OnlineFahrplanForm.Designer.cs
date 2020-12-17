@@ -96,7 +96,7 @@
             // 
             this.spContainer.Panel2.Controls.Add(this.gridResult);
             this.spContainer.Size = new System.Drawing.Size(838, 592);
-            this.spContainer.SplitterDistance = 198;
+            this.spContainer.SplitterDistance = 197;
             this.spContainer.SplitterWidth = 3;
             this.spContainer.TabIndex = 0;
             // 
@@ -144,6 +144,7 @@
             this.tbxMail.TabIndex = 9;
             this.tbxMail.Tag = "";
             this.tbxMail.Text = "max.mustermann@example.com";
+            this.tbxMail.TextChanged += new System.EventHandler(this.tbxMail_TextChanged);
             // 
             // btnSendEmail
             // 
@@ -154,8 +155,9 @@
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(70, 44);
             this.btnSendEmail.TabIndex = 8;
-            this.btnSendEmail.Text = "Mailen";
+            this.btnSendEmail.Text = "Verbindung senden";
             this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.BtnSendEmail_Click);
             // 
             // btnStationBoard
             // 
@@ -315,6 +317,7 @@
             this.btnMapTargetLocation.Size = new System.Drawing.Size(47, 42);
             this.btnMapTargetLocation.TabIndex = 5;
             this.btnMapTargetLocation.UseVisualStyleBackColor = true;
+            this.btnMapTargetLocation.Click += new System.EventHandler(this.btnMapTargetLocation_Click);
             // 
             // btnMapStartLocation
             // 
@@ -367,13 +370,15 @@
             this.Kante_Abfahrtsort,
             this.Kante_Ankunftsort});
             this.gridResult.GridColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gridResult.Location = new System.Drawing.Point(3, 3);
+            this.gridResult.Location = new System.Drawing.Point(0, 0);
             this.gridResult.Name = "gridResult";
+            this.gridResult.ReadOnly = true;
             this.gridResult.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.gridResult.RowHeadersVisible = false;
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridResult.Size = new System.Drawing.Size(835, 342);
+            this.gridResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridResult.Size = new System.Drawing.Size(838, 154);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
@@ -423,6 +428,7 @@
             this.Kante_Abfahrtsort.HeaderText = "Kante Abfahrtsort";
             this.Kante_Abfahrtsort.MinimumWidth = 15;
             this.Kante_Abfahrtsort.Name = "Kante_Abfahrtsort";
+            this.Kante_Abfahrtsort.ReadOnly = true;
             // 
             // Kante_Ankunftsort
             // 
@@ -436,11 +442,11 @@
             this.AcceptButton = this.btnSearch;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 472);
+            this.ClientSize = new System.Drawing.Size(837, 352);
             this.Controls.Add(this.spContainer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(51, 61);
+            this.MinimumSize = new System.Drawing.Size(37, 61);
             this.Name = "OnlineFahrplanForm";
             this.Text = "SBB CFF FFS - Fahrplan";
             this.spContainer.Panel1.ResumeLayout(false);
