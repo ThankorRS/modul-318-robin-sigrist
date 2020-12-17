@@ -29,10 +29,10 @@ namespace SwissTransportApp
             gmapCtrl.MaxZoom = 24;
             gmapCtrl.Zoom = 9;
             gmapCtrl.AutoScroll = true;
-            GMapOverlay markersOverlay = new GMapOverlay("marker");
+            GMapOverlay markersOverlay = new GMapOverlay("Position der Station");
             GMapMarker marker = new GMarkerGoogle(
                 new PointLatLng(XCoordinate, YCoordinate),
-                GMarkerGoogleType.blue_pushpin);
+                GMarkerGoogleType.red);
             markersOverlay.Markers.Add(marker);
             gmapCtrl.Overlays.Add(markersOverlay);
         }

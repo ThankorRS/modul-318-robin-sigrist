@@ -42,6 +42,7 @@
             this.gmapCtrl.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gmapCtrl.LevelsKeepInMemory = 5;
             this.gmapCtrl.Location = new System.Drawing.Point(0, 0);
+            this.gmapCtrl.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.gmapCtrl.MarkersEnabled = true;
             this.gmapCtrl.MaxZoom = 2;
             this.gmapCtrl.MinZoom = 2;
@@ -55,17 +56,19 @@
             this.gmapCtrl.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gmapCtrl.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gmapCtrl.ShowTileGridLines = false;
-            this.gmapCtrl.Size = new System.Drawing.Size(703, 541);
+            this.gmapCtrl.Size = new System.Drawing.Size(2226, 1540);
             this.gmapCtrl.TabIndex = 0;
             this.gmapCtrl.Zoom = 0D;
+            this.gmapCtrl.Load += new System.EventHandler(this.GoogleMapsForm_Load);
             // 
             // GoogleMapsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 541);
+            this.ClientSize = new System.Drawing.Size(2226, 1540);
             this.Controls.Add(this.gmapCtrl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "GoogleMapsForm";
             this.Text = "Google Maps";
             this.ResumeLayout(false);
