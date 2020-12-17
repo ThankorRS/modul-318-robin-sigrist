@@ -325,6 +325,7 @@
             this.btnMapStartLocation.Size = new System.Drawing.Size(47, 45);
             this.btnMapStartLocation.TabIndex = 4;
             this.btnMapStartLocation.UseVisualStyleBackColor = true;
+            this.btnMapStartLocation.Click += new System.EventHandler(this.btnMapStartLocation_Click);
             // 
             // lbZiel
             // 
@@ -372,7 +373,7 @@
             this.gridResult.RowHeadersVisible = false;
             this.gridResult.RowHeadersWidth = 123;
             this.gridResult.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.gridResult.Size = new System.Drawing.Size(835, 340);
+            this.gridResult.Size = new System.Drawing.Size(835, 341);
             this.gridResult.TabIndex = 0;
             // 
             // Datum
